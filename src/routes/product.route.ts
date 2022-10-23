@@ -18,7 +18,7 @@ import {
 const productRouter = express.Router();
 
 productRouter.get(
-  "/getproduct/:id",
+  "/getproduct/:slug",
   validateRequest(getProductSchema),
   getProduct
 );
@@ -31,6 +31,12 @@ productRouter.get(
 
 productRouter.get(
   "/getproducts/:gender/:category",
+  validateRequest(getProductsSchema),
+  getProducts
+);
+
+productRouter.get(
+  "/getproducts/:gender/:style",
   validateRequest(getProductsSchema),
   getProducts
 );

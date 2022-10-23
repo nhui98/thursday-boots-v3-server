@@ -24,7 +24,7 @@ const Product = z.object({
 
 export const getProductSchema = z.object({
   params: z.object({
-    id: z.string().refine((val) => mongoose.Types.ObjectId.isValid(val)),
+    slug: z.string(),
   }),
 });
 
@@ -46,7 +46,7 @@ export const addProductsSchema = z.object({
 
 export const deleteProductSchema = z.object({
   params: z.object({
-    id: z.string().refine((val) => mongoose.Types.ObjectId.isValid(val)),
+    slug: z.string(),
   }),
 });
 

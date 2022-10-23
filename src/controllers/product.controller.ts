@@ -6,10 +6,10 @@ import {
 import Product from "../models/product.model";
 
 export async function getProduct(req: Request, res: Response) {
-  const id = req.params.id;
+  const slug = req.params.slug;
 
   try {
-    const product = await Product.findById(id);
+    const product = await Product.findOne({ slug });
     if (!product) throw new Error("No product found");
 
     res.status(200).json(product);
