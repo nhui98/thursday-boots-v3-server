@@ -11,7 +11,7 @@ const Product = z.object({
   images: z.string().array().nonempty(),
   sizes: z
     .object({
-      size: z.number().positive().int().gt(5).lt(16),
+      size: z.number().positive().gt(5).lt(15),
       stock: z.number().nonnegative(),
     })
     .array(),

@@ -5,11 +5,13 @@ import productRouter from "./routes/product.route";
 import userRouter from "./routes/user.route";
 import connect from "./utils/connect";
 import log from "./utils/logger";
+import cors from "cors";
 
 const app: Express = express();
 
 //* Middleware
 app.use(express.json());
+app.use(cors());
 
 //* Routes
 app.use("/api/user", userRouter);

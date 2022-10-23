@@ -26,7 +26,7 @@ export async function getProducts(req: Request, res: Response) {
   };
 
   if (category) query.category = category;
-  if (style) query.category = category;
+  if (style) query.style = style;
 
   try {
     const products = await Product.find(query);
