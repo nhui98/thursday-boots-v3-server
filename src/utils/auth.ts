@@ -2,14 +2,20 @@ import { Types } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 
 export const createJwtToken = (id: Types.ObjectId) => {
-  if (!JWT_SECRET) throw new Error("No JWT Secret Available");
+  if (!ACCESS_TOKEN_SECRET) throw new Error("No JWT Secret Available");
 
-  const token = jwt.sign({ id }, JWT_SECRET, {
-    expiresIn: 3600, //seconds
-  });
+  const token = jwt.sign({ id }, ACCESS_TOKEN_SECRET);
+
+  return token;
+};
+
+export const createRefreshToken = (id: Types.ObjectId) => {
+  if (!ACCESS_TOKEN_SECRET) throw new Error("No JWT Secret Available");
+
+  const token = jwt.sign({ id }, ACCESS_TOKEN_SECRET);
 
   return token;
 };

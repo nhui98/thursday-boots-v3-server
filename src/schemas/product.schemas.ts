@@ -1,5 +1,4 @@
 import z from "zod";
-import mongoose from "mongoose";
 
 const Product = z.object({
   slug: z.string(),
@@ -11,7 +10,7 @@ const Product = z.object({
   images: z.string().array().nonempty(),
   sizes: z
     .object({
-      size: z.number().positive().gt(5).lt(15),
+      size: z.number().positive().gt(3).lt(15),
       stock: z.number().nonnegative(),
     })
     .array(),
